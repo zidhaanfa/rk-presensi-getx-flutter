@@ -46,27 +46,30 @@ class EmployeeView extends GetView<EmployeeController> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // ----------------------- Search ----------------------- //
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomTextFormField2(
-                      name: 'Search',
-                      controller: controller.searchController,
-                      enable: true,
-                      errorText: 'error',
-                      keyboardType: TextInputType.name,
-                      height: 50,
-                      prefixIcon: Icons.search,
-                      color: MyTheme.theme.buttonTheme.colorScheme!.primary
-                          .withOpacity(0.7),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    // ----------------------- Search ----------------------- //
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CustomTextFormField2(
+                        name: 'Search',
+                        controller: controller.searchController,
+                        enable: true,
+                        errorText: 'error',
+                        keyboardType: TextInputType.name,
+                        height: 50,
+                        prefixIcon: Icons.search,
+                        color: MyTheme.theme.buttonTheme.colorScheme!.primary
+                            .withOpacity(0.7),
+                      ),
                     ),
-                  ),
 
-                  // ----------------------- Employee List ----------------------- //
-                  EmployeeList(),
-                ],
+                    // ----------------------- Employee List ----------------------- //
+                    EmployeeList(),
+                  ],
+                ),
               ),
             ),
           ),

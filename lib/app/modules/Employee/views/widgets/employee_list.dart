@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rk_attend/app/modules/Employee/views/view_micro/employee_detail.dart';
 
 import 'components/employee_item.dart';
 
@@ -13,7 +15,11 @@ class EmployeeList extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return EmployeeItem();
+        return EmployeeItem(
+          onTap: () {
+            Get.to(() => EmployeeDetail());
+          },
+        );
       },
     );
   }

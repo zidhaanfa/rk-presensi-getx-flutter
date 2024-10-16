@@ -15,6 +15,7 @@ class EmployeeItem extends StatelessWidget {
     this.email,
     this.whatsapp,
     this.image,
+    this.onTap,
   }) : super(key: key);
 
   String? name;
@@ -23,98 +24,103 @@ class EmployeeItem extends StatelessWidget {
   String? email;
   String? whatsapp;
   String? image;
+  Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.0,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
-                      decoration: BoxDecoration(
-                          color: MyTheme
-                              .theme.buttonTheme.colorScheme!.onSecondary,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        clipBehavior: Clip.antiAlias,
-                        child: Image.asset(
-                          image ?? 'assets/images/person1.png',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Card(
+        elevation: 0.0,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
+                        decoration: BoxDecoration(
+                            color: MyTheme
+                                .theme.buttonTheme.colorScheme!.onSecondary,
+                            borderRadius: BorderRadius.circular(50)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          clipBehavior: Clip.antiAlias,
+                          child: Image.asset(
+                            image ?? 'assets/images/person1.png',
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 0.02.sw,
-                    ),
-                    Container(
-                      width: 0.4.sw,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomText2(
-                            text: name ?? 'Muhamad Zidan Fathoni',
-                            fontType: FontType.bodyMedium,
-                            weight: FontWeight.bold,
-                            maxLines: 2,
-                          ),
-                          CustomText2(
-                            text: position ?? 'Mobile Developer',
-                            fontType: FontType.bodyMedium,
-                            maxLines: 2,
-                          ),
-                        ],
+                      SizedBox(
+                        width: 0.02.sw,
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    //3 icon
-                    IconButton(
-                      onPressed: () {
-                        // Config.launcher.launch('tel:$phone');
-                      },
-                      icon: Icon(
-                        FontAwesomeIcons.squarePhone,
-                        color: Colors.blue,
+                      Container(
+                        width: 0.4.sw,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CustomText2(
+                              text: name ?? 'Muhamad Zidan Fathoni',
+                              fontType: FontType.bodyMedium,
+                              weight: FontWeight.bold,
+                              maxLines: 2,
+                            ),
+                            CustomText2(
+                              text: position ?? 'Mobile Developer',
+                              fontType: FontType.bodyMedium,
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        // Config.launcher.launch('mailto:$email');
-                      },
-                      icon: Icon(
-                        FontAwesomeIcons.squareWhatsapp,
-                        color: Colors.green,
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      //3 icon
+                      IconButton(
+                        onPressed: () {
+                          // Config.launcher.launch('tel:$phone');
+                        },
+                        icon: Icon(
+                          FontAwesomeIcons.squarePhone,
+                          color: Colors.blue,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        // Config.launcher.launch('mailto:$email');
-                      },
-                      icon: Icon(
-                        FontAwesomeIcons.squareEnvelope,
-                        color: Colors.red,
+                      IconButton(
+                        onPressed: () {
+                          // Config.launcher.launch('mailto:$email');
+                        },
+                        icon: Icon(
+                          FontAwesomeIcons.squareWhatsapp,
+                          color: Colors.green,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+                      IconButton(
+                        onPressed: () {
+                          // Config.launcher.launch('mailto:$email');
+                        },
+                        icon: Icon(
+                          FontAwesomeIcons.squareEnvelope,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
