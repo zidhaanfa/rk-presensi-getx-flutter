@@ -8,10 +8,18 @@ class AnnouncementItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard1(
-      title: 'Flutter for beginners',
-      subtitle: '16 Oct 2024',
-      part: 'Information',
+    return ListView.builder(
+      padding: const EdgeInsets.all(0),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 3,
+      itemBuilder: (context, index) {
+        return CustomCard1(
+          title: 'Flutter for beginners',
+          subtitle: 'Information',
+          part: '16 Oct 2024',
+        );
+      },
     );
   }
 }

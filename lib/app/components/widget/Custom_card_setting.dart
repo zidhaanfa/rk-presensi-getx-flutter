@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../config/config.dart';
 import 'Custom_text.dart';

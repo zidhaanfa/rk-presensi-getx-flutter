@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/modules/notification/views/notification_view.dart';
-import 'package:getx_skeleton/app/modules/timeOff/views/time_off_view.dart';
+import 'package:rk_attend/app/modules/Employee/views/employee_view.dart';
+import 'package:rk_attend/app/modules/timeOff/views/time_off_view.dart';
 
 import '../../account/views/account_view.dart';
 import '../../home/views/home_view.dart';
@@ -17,7 +17,7 @@ class CustomNavigationBarController extends GetxController {
   late List<Widget> pages;
 // Initial Page to be displayed
   late HomeView homeView;
-  late NotificationView notificationView;
+  late EmployeeView employeeView;
   late TimeOffView timeOffView;
   late AccountView accountView;
 // Global Key for the Navigation Bar
@@ -32,7 +32,7 @@ class CustomNavigationBarController extends GetxController {
 
   final iconList = <IconData>[
     FontAwesomeIcons.houseUser,
-    FontAwesomeIcons.solidBell,
+    FontAwesomeIcons.peopleGroup,
     FontAwesomeIcons.userClock,
     FontAwesomeIcons.gear,
   ];
@@ -43,14 +43,14 @@ class CustomNavigationBarController extends GetxController {
 
     // Initialize the Pages
     homeView = HomeView();
-    notificationView = NotificationView();
+    employeeView = EmployeeView();
     timeOffView = TimeOffView();
     accountView = AccountView();
 
     // Initialize the List of Pages
     pages = [
       homeView,
-      notificationView,
+      employeeView,
       timeOffView,
       accountView,
     ];

@@ -19,6 +19,9 @@ class InfoMenu extends StatelessWidget {
             title: 'Reimbursement',
             iconColor: Colors.blue,
             elevation: 0.2,
+            onTap: () {
+              // Get.toNamed(Routes.ACCOUNT_PERSONAL_INFORMATION);
+            },
           ),
           InfoGridMenuItem(
             icon: FontAwesomeIcons.clock,

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/Employee/bindings/employee_binding.dart';
+import '../modules/Employee/views/employee_view.dart';
 import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
 import '../modules/announcement/bindings/announcement_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.EMPLOYEE,
+      page: () => const EmployeeView(),
+      binding: EmployeeBinding(),
     ),
   ];
 }

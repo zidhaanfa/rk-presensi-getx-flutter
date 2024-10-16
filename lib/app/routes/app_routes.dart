@@ -10,6 +10,7 @@ abstract class Routes {
   static const ANNOUNCEMENT = _Paths.ANNOUNCEMENT;
   static const TIME_OFF = _Paths.TIME_OFF;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const EMPLOYEE = _Paths.EMPLOYEE;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const ANNOUNCEMENT = '/announcement';
   static const TIME_OFF = '/time-off';
   static const NOTIFICATION = '/notification';
+  static const EMPLOYEE = '/employee';
 }

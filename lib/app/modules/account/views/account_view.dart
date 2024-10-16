@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../../../../config/theme/theme_extensions/header_container_theme_data.dart';
 import '../../../components/widget/Custom_appBar.dart';

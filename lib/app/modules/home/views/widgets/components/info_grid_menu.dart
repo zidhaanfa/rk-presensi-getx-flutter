@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../../../../../components/config/config.dart';
 import '../../../../../components/widget/Custom_text.dart';
@@ -27,10 +27,14 @@ class InfoGridMenu extends StatelessWidget {
         primary: false,
         addAutomaticKeepAlives: true,
         cacheExtent: 9999,
+        controller: ScrollController(
+          initialScrollOffset: 0,
+          keepScrollOffset: true,
+        ),
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 150,
+          maxCrossAxisExtent: 110,
           childAspectRatio: 1 / 1.5,
           // crossAxisSpacing: 10,
           // mainAxisSpacing: 3,
@@ -55,6 +59,7 @@ class InfoGridMenuItem extends StatelessWidget {
     this.icon,
     this.iconSize,
     this.elevation,
+    this.onTap,
   }) : super(key: key);
 
   Color? cardColor;
@@ -65,34 +70,39 @@ class InfoGridMenuItem extends StatelessWidget {
   IconData? icon;
   double? iconSize;
   double? elevation;
+  Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(6.0),
-      child: Column(
-        children: [
-          Icon(
-            icon ?? Icons.info,
-            size: iconSize ?? 25,
-            color: iconColor ?? theme.buttonTheme.colorScheme!.onPrimary,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                CustomText2(
-                  text: title ?? 'text',
-                  fontType: FontType.bodySmall,
-                  // colorText: MyTheme.theme.textTheme.bodyMedium!.color,
-                  // weight: FontWeight.bold,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                ),
-              ],
+    return InkWell(
+      borderRadius: BorderRadius.circular(10),
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Column(
+          children: [
+            Icon(
+              icon ?? Icons.info,
+              size: iconSize ?? 25,
+              color: iconColor ?? theme.buttonTheme.colorScheme!.onPrimary,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  CustomText2(
+                    text: title ?? 'text',
+                    fontType: FontType.bodySmall,
+                    // colorText: MyTheme.theme.textTheme.bodyMedium!.color,
+                    // weight: FontWeight.bold,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

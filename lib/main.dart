@@ -51,6 +51,7 @@ Future<void> main() async {
           darkTheme: MyTheme.dark,
 
           themeMode: MyTheme.themeLight,
+          defaultTransition: Transition.zoom,
           initialRoute:
               AppPages.INITIAL, // first screen to show when app is running
           getPages: AppPages.routes, // app screens

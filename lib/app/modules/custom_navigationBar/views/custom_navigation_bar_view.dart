@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import '../../home/bindings/home_binding.dart';
+import '/config/theme/my_theme.dart';
 
 import '../controllers/custom_navigation_bar_controller.dart';
 
@@ -17,22 +18,26 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
         Get.put(CustomNavigationBarController());
     return Obx(() => Scaffold(
           body: controller.pages[controller.bottomNavIndex.value],
+          floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: MyTheme.theme.buttonTheme.colorScheme!.primary,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(40.0),
-              ),
-            ),
-            child: Icon(
-              //icon request attendance
-              FontAwesomeIcons.rightToBracket,
-              color: MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
-            ),
-            onPressed: () {},
-          ),
+          floatingActionButton: controller.bottomNavIndex.value == 0
+              ? FloatingActionButton(
+                  backgroundColor:
+                      MyTheme.theme.buttonTheme.colorScheme!.primary,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40.0),
+                    ),
+                  ),
+                  child: Icon(
+                    //icon request attendance
+                    FontAwesomeIcons.rightToBracket,
+                    color: MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                  ),
+                  onPressed: () {},
+                )
+              : null,
           bottomNavigationBar: AnimatedBottomNavigationBar.builder(
             itemCount: controller.iconList.length,
             height: 65,
@@ -63,7 +68,21 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
             rightCornerRadius: 20,
             blurEffect: true,
             onTap: (index) {
-              controller.bottomNavIndex(index);
+              // controller.bottomNavIndex(index);
+              if (index == 0) {
+                print('index 0');
+                controller.bottomNavIndex.value = index;
+                BindingsBuilder.put(() => HomeBinding());
+              } else if (index == 1) {
+                print('index 1');
+                controller.bottomNavIndex.value = index;
+              } else if (index == 2) {
+                print('index 2');
+                controller.bottomNavIndex.value = index;
+              } else if (index == 3) {
+                print('index 3');
+                controller.bottomNavIndex.value = index;
+              }
             },
             // hideAnimationController: controller.hideBottomBarAnimationController,
           ),

@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:getx_skeleton/app/data/local/my_shared_pref.dart';
+import 'package:rk_attend/app/data/local/my_shared_pref.dart';
 import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -19,14 +19,10 @@ enum RequestType {
 }
 
 class BaseClient {
-  static final Dio _dio = Dio(
-      BaseOptions(
-          headers: {
-            'Content-Type' : 'application/json',
-            'Accept' : 'application/json'
-          }
-      )
-  )
+  static final Dio _dio = Dio(BaseOptions(headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }))
     ..interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -45,21 +41,19 @@ class BaseClient {
 
   /// perform safe api request
   static safeApiCall(
-      String url,
-      RequestType requestType, {
-        Map<String, dynamic>? headers,
-        Map<String, dynamic>? queryParameters,
-        required Function(Response response) onSuccess,
-        Function(ApiException)? onError,
-        Function(int value, int progress)? onReceiveProgress,
-        Function(int total, int progress)?
+    String url,
+    RequestType requestType, {
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParameters,
+    required Function(Response response) onSuccess,
+    Function(ApiException)? onError,
+    Function(int value, int progress)? onReceiveProgress,
+    Function(int total, int progress)?
         onSendProgress, // while sending (uploading) progress
-        Function? onLoading,
-        dynamic data,
-      }) async {
+    Function? onLoading,
+    dynamic data,
+  }) async {
     try {
-
-
       // 1) indicate loading state
       await onLoading?.call();
       // 2) try to perform http request
@@ -121,15 +115,17 @@ class BaseClient {
   /// download file
   static download(
       {required String url, // file url
-        required String savePath, // where to save file
-        Function(ApiException)? onError,
-        Function(int value, int progress)? onReceiveProgress,
-        required Function onSuccess}) async {
+      required String savePath, // where to save file
+      Function(ApiException)? onError,
+      Function(int value, int progress)? onReceiveProgress,
+      required Function onSuccess}) async {
     try {
       await _dio.download(
         url,
         savePath,
-        options: Options(receiveTimeout: const Duration(seconds: _timeoutInSeconds), sendTimeout: const Duration(seconds: _timeoutInSeconds)),
+        options: Options(
+            receiveTimeout: const Duration(seconds: _timeoutInSeconds),
+            sendTimeout: const Duration(seconds: _timeoutInSeconds)),
         onReceiveProgress: onReceiveProgress,
       );
       onSuccess();
@@ -142,8 +138,8 @@ class BaseClient {
   /// handle unexpected error
   static _handleUnexpectedException(
       {Function(ApiException)? onError,
-        required String url,
-        required Object error}) {
+      required String url,
+      required Object error}) {
     if (onError != null) {
       onError(ApiException(
         message: error.toString(),
@@ -183,12 +179,11 @@ class BaseClient {
   /// handle Dio error
   static _handleDioError(
       {required DioException error,
-        Function(ApiException)? onError,
-        required String url}) {
-
+      Function(ApiException)? onError,
+      required String url}) {
     // no internet connection
-    if(error.type == DioExceptionType.connectionError){
-      return _handleSocketException(url: url,onError: onError);
+    if (error.type == DioExceptionType.connectionError) {
+      return _handleSocketException(url: url, onError: onError);
     }
 
     // 404 error
@@ -205,7 +200,8 @@ class BaseClient {
     }
 
     // no internet connection
-    if (error.message != null && error.message!.toLowerCase().contains('socket')) {
+    if (error.message != null &&
+        error.message!.toLowerCase().contains('socket')) {
       if (onError != null) {
         return onError(ApiException(
           message: Strings.noInternetConnection.tr,

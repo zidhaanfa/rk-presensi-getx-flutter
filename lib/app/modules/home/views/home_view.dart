@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rk_attend/app/modules/notification/views/notification_view.dart';
 
 import '../../../components/widget/Custom_appBar.dart';
 import '../controllers/home_controller.dart';
@@ -21,7 +22,9 @@ class HomeView extends GetView<HomeController> {
             pageName: 'Zidanfath',
             subTitle: 'Mobile Developer',
             trailingIcon: CupertinoIcons.bell_fill,
-            onTrailingTap: () {},
+            onTrailingTap: () {
+              Get.to(() => const NotificationView());
+            },
             // image: 'assets/images/app_icon.png',
           ),
 

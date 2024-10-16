@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../../../../../components/config/config.dart';
 import '../../../../../components/widget/Custom_text.dart';

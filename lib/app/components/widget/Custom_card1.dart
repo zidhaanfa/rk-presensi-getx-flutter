@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/theme/my_theme.dart';
@@ -13,14 +12,14 @@ class CustomCard1 extends StatelessWidget {
     required this.title,
     this.bottomWidget,
     required this.subtitle,
-    required this.part,
+    this.part,
     this.image,
   }) : super(key: key);
 
   String title;
   Widget? bottomWidget;
   String subtitle;
-  String part;
+  String? part;
   String? image;
   IconData? icon;
   @override
@@ -41,24 +40,27 @@ class CustomCard1 extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: 0,
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: MyTheme.theme.colorScheme.primary.withOpacity(0.5),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8.r),
-                  ),
-                ),
-                child: CustomText(
-                  text: '$part',
-                  fontType: FontType.titleSmall,
-                  colorText: Colors.white,
-                ),
-              ),
-            ),
+            part != null
+                ? Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color:
+                            MyTheme.theme.colorScheme.primary.withOpacity(0.5),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(8.r),
+                        ),
+                      ),
+                      child: CustomText(
+                        text: '$part',
+                        fontType: FontType.titleSmall,
+                        colorText: Colors.white,
+                      ),
+                    ),
+                  )
+                : SizedBox(),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -82,7 +84,7 @@ class CustomCard1 extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : SizedBox(),
+                          : Container(),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 5.0, horizontal: 5),
@@ -117,7 +119,7 @@ class CustomCard1 extends StatelessWidget {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   bottomWidget ?? Container(),

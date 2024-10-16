@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../../../../components/config/base_data.dart';
 import '../../../../components/config/config.dart';

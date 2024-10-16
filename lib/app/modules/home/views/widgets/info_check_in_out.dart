@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/components/config/config.dart';
-import 'package:getx_skeleton/app/components/widget/Custom_text2.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
+import 'package:rk_attend/app/components/config/config.dart';
+import 'package:rk_attend/app/components/widget/Custom_text2.dart';
+import 'package:rk_attend/config/theme/my_theme.dart';
 
 import '../../../../components/widget/Custom_text.dart';
 
