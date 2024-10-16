@@ -12,14 +12,17 @@ class CustomCard1 extends StatelessWidget {
     Key? key,
     required this.title,
     this.bottomWidget,
-    required this.time,
+    required this.subtitle,
     required this.part,
+    this.image,
   }) : super(key: key);
 
   String title;
   Widget? bottomWidget;
-  String time;
+  String subtitle;
   String part;
+  String? image;
+  IconData? icon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,25 +60,29 @@ class CustomCard1 extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: image != null
+                        ? MainAxisAlignment.spaceEvenly
+                        : MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 5),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            'assets/images/person1.png',
-                            width: 0.25.sw,
-                            height: 0.1.sh,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
+                      image != null
+                          ? Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 5.0, horizontal: 5),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  'assets/images/person1.png',
+                                  width: 0.25.sw,
+                                  height: 0.1.sh,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            )
+                          : SizedBox(),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 5.0, horizontal: 5),
@@ -92,13 +99,16 @@ class CustomCard1 extends StatelessWidget {
                               Row(
                                 children: [
                                   //icon timer and text
-                                  Icon(
-                                    Icons.timer,
-                                    color: MyTheme.theme.colorScheme.primary,
-                                    size: 20,
-                                  ),
+                                  icon != null
+                                      ? Icon(
+                                          icon ?? Icons.calendar_today,
+                                          color:
+                                              MyTheme.theme.colorScheme.primary,
+                                          size: 20,
+                                        )
+                                      : SizedBox(),
                                   CustomText(
-                                    text: time,
+                                    text: subtitle,
                                     fontType: FontType.bodyMedium,
                                     weight: FontWeight.normal,
                                   ),

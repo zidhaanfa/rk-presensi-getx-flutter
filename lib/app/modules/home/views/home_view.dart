@@ -1,16 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../config/translations/strings_enum.dart';
-import '../../../components/api_error_widget.dart';
-import '../../../components/my_widgets_animator.dart';
+import '../../../components/widget/Custom_appBar.dart';
 import '../controllers/home_controller.dart';
-import 'widgets/data_grid.dart';
-import 'widgets/employees_list.dart';
-import 'widgets/header.dart';
+import 'widgets/info_check_in_out.dart';
+import 'widgets/info_menu.dart';
+import 'widgets/info_announcement.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -21,65 +17,30 @@ class HomeView extends GetView<HomeController> {
       body: Column(
         children: [
           // ----------------------- Header ----------------------- //
-          const Header(),
+          CustomAppBar(
+            pageName: 'Zidanfath',
+            subTitle: 'Mobile Developer',
+            trailingIcon: CupertinoIcons.bell_fill,
+            onTrailingTap: () {},
+            // image: 'assets/images/app_icon.png',
+          ),
 
-          // ----------------------- Content ----------------------- //
-          GetBuilder<HomeController>(
-            builder: (_) {
-              return Expanded(
-                child: MyWidgetsAnimator(
-                  apiCallStatus: controller.apiCallStatus,
-                  loadingWidget: () => const Center(child: CupertinoActivityIndicator(),),
-                  errorWidget: () => ApiErrorWidget(
-                      message: Strings.internetError.tr,
-                      retryAction: () => controller.getData(),
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  ),
-                  successWidget: () => SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        20.verticalSpace,
-                        // ----------------------- Attendance List Tile ----------------------- //
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          child: ListTile(
-                            title: Text(Strings.attendanceRegistration.tr),
-                            subtitle: Text(Strings.time.tr),
-                            trailing: const Icon(Icons.arrow_forward),
-                            leading: Container(
-                              height: 47.h,
-                              width: 47.h,
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: SvgPicture.asset(
-                                'assets/vectors/profile.svg',
-                                fit: BoxFit.none,
-                                color: Colors.white,
-                                height: 19.h,
-                                width: 19.h,
-                              ),
-                            ),
-                          ),
-                        ),
-                        20.verticalSpace,
+          // ----------------------- Body ----------------------- //
+          const Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // ----------------------- Check in out ----------------------- //
+                  InfoCheckInOut(),
 
-                        // ----------------------- Employee details cards ----------------------- //
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          child: DataGrid(),
-                        ),
-                        20.verticalSpace,
+                  // ----------------------- Menu ----------------------- //
+                  InfoMenu(),
 
-                        // ----------------------- Employees List ----------------------- //
-                        EmployeesList(),
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            }
+                  // ----------------------- Today Attendances ----------------------- //
+                  InfoAnnouncement(),
+                ],
+              ),
+            ),
           ),
         ],
       ),

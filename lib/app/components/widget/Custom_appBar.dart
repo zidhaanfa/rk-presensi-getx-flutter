@@ -24,7 +24,7 @@ class CustomAppBar extends StatelessWidget {
   Color? trailingColor;
   bool? withTrailing;
   bool? withImage;
-  Image? image;
+  String? image;
   Widget? trailingWidget;
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,8 @@ class CustomAppBar extends StatelessWidget {
       height: 110.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: theme.primaryColor,
-      ),
+          // color: theme.appBarTheme.backgroundColor,
+          ),
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget {
             right: 0,
             top: -125.h,
             child: CircleAvatar(
-              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.05),
+              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.08),
               radius: 111,
             ),
           ),
@@ -51,7 +51,7 @@ class CustomAppBar extends StatelessWidget {
             right: -7.w,
             top: -160.h,
             child: CircleAvatar(
-              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.05),
+              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.08),
               radius: 111,
             ),
           ),
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
             right: -21.w,
             top: -195.h,
             child: CircleAvatar(
-              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.05),
+              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.08),
               radius: 111,
             ),
           ),
@@ -69,7 +69,7 @@ class CustomAppBar extends StatelessWidget {
             left: -21.w,
             bottom: -195.h,
             child: CircleAvatar(
-              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.05),
+              backgroundColor: theme.secondaryHeaderColor.withOpacity(0.08),
               radius: 111,
             ),
           ),
@@ -94,11 +94,16 @@ class CustomAppBar extends StatelessWidget {
                             width: 1,
                           ),
                         ),
-                        child: image ??
-                            Image.asset(
-                              'assets/images/person1.png',
+                        child: Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(6.r),
+                            child: Image.asset(
+                              image ?? 'assets/images/person1.png',
                               height: double.infinity,
                             ),
+                          ),
+                        ),
                       )
                     : SizedBox(),
                 9.horizontalSpace,
@@ -112,7 +117,7 @@ class CustomAppBar extends StatelessWidget {
                         pageName,
                         maxLines: 1,
                         style: theme.textTheme.bodyLarge?.copyWith(
-                          color: theme.primaryTextTheme.headline1?.color,
+                          // color: theme.primaryTextTheme.headline1?.color,
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -121,9 +126,9 @@ class CustomAppBar extends StatelessWidget {
                     Text(
                       subTitle ?? 'Zidanfath',
                       style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.primaryTextTheme.headline1?.color,
-                        // fontSize: 12.sp,
-                      ),
+                          // color: theme.primaryTextTheme.headline1?.color,
+                          // fontSize: 12.sp,
+                          ),
                     ),
                   ],
                 ),
@@ -136,8 +141,7 @@ class CustomAppBar extends StatelessWidget {
                         onPressed: onTrailingTap,
                         icon: Icon(
                           trailingIcon ?? CupertinoIcons.bell_fill,
-                          color: trailingColor ??
-                              theme.primaryTextTheme.headline1?.color,
+                          color: trailingColor,
                           // size: 25.sp,
                         ),
                       )

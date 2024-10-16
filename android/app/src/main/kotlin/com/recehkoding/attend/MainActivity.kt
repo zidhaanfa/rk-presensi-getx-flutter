@@ -1,4 +1,4 @@
-package com.recehkoding.presensi
+package com.recehkoding.attend
 
 import io.flutter.embedding.android.FlutterActivity
 

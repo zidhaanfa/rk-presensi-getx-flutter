@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.obsecureText,
     this.withError,
     this.color,
+    this.fillColor,
   }) : super(key: key);
 
   String name;
@@ -35,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
   bool? obsecureText;
   bool? withError;
   Color? color;
+  Color? fillColor;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: name,
+        fillColor: fillColor ?? Colors.transparent,
         constraints: BoxConstraints(
           minHeight: 50,
         ),
