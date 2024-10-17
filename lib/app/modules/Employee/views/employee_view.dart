@@ -13,6 +13,7 @@ class EmployeeView extends GetView<EmployeeController> {
   const EmployeeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     EmployeeController controller = Get.put(EmployeeController());
     return Scaffold(
       body: Column(
@@ -30,14 +31,14 @@ class EmployeeView extends GetView<EmployeeController> {
                   icon: Icon(
                     //icon urutan organisasi
                     FontAwesomeIcons.sitemap,
-                    // color: MyTheme.theme.buttonTheme.colorScheme!.primary,
+                    // color: theme.buttonTheme.colorScheme!.primary,
                   ),
                 ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
                     Icons.filter_alt,
-                    // color: MyTheme.theme.buttonTheme.colorScheme!.secondary,
+                    // color: theme.buttonTheme.colorScheme!.secondary,
                   ),
                 ),
               ],
@@ -61,7 +62,7 @@ class EmployeeView extends GetView<EmployeeController> {
                         keyboardType: TextInputType.name,
                         height: 50,
                         prefixIcon: Icons.search,
-                        color: MyTheme.theme.buttonTheme.colorScheme!.primary
+                        color: theme.buttonTheme.colorScheme!.primary
                             .withOpacity(0.7),
                       ),
                     ),

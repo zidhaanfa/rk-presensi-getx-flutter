@@ -19,6 +19,7 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     LoginController controller = Get.put(LoginController());
     return Obx(() {
       return Scaffold(
@@ -60,8 +61,7 @@ class RegisterForm extends StatelessWidget {
                           fontType: FontType.headlineLarge,
                           maxLines: 3,
                           weight: FontWeight.bold,
-                          colorText:
-                              MyTheme.theme.buttonTheme.colorScheme!.primary,
+                          colorText: theme.buttonTheme.colorScheme!.primary,
                         ),
                       ],
                     ),
@@ -130,8 +130,7 @@ class RegisterForm extends StatelessWidget {
                           () => Checkbox(
                             value: controller.rememberMe.value,
                             onChanged: controller.changeRememberMe,
-                            activeColor:
-                                MyTheme.theme.buttonTheme.colorScheme!.primary,
+                            activeColor: theme.buttonTheme.colorScheme!.primary,
                             side: BorderSide(
                               color: ColorPalettes.primary,
                             ),
@@ -163,9 +162,8 @@ class RegisterForm extends StatelessWidget {
                       name: 'Register',
                       height: 50,
                       width: double.infinity,
-                      color: MyTheme.theme.buttonTheme.colorScheme!.primary,
-                      colorText:
-                          MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                      color: theme.buttonTheme.colorScheme!.primary,
+                      colorText: theme.buttonTheme.colorScheme!.onPrimary,
                     ),
                     const SizedBox(
                       height: 10,
@@ -180,8 +178,7 @@ class RegisterForm extends StatelessWidget {
                         CustomTextButton(
                           text: 'Login',
                           fontType: FontType.bodyMedium,
-                          colorText:
-                              MyTheme.theme.buttonTheme.colorScheme!.primary,
+                          colorText: theme.buttonTheme.colorScheme!.primary,
                           onPressed: () {
                             controller.changeForm();
                             // Get.to(() => LoginView(),

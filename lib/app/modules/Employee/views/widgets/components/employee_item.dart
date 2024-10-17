@@ -27,6 +27,7 @@ class EmployeeItem extends StatelessWidget {
   Function()? onTap;
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
@@ -45,16 +46,15 @@ class EmployeeItem extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
                         decoration: BoxDecoration(
-                            color: MyTheme
-                                .theme.buttonTheme.colorScheme!.onSecondary,
+                            color: theme.buttonTheme.colorScheme!.onSecondary,
                             borderRadius: BorderRadius.circular(50)),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50),
                           clipBehavior: Clip.antiAlias,
                           child: Image.asset(
                             image ?? 'assets/images/person1.png',
-                            width: 50,
-                            height: 50,
+                            width: 45,
+                            height: 45,
                             fit: BoxFit.cover,
                           ),
                         ),

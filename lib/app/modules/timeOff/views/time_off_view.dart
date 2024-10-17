@@ -13,6 +13,7 @@ class TimeOffView extends GetView<TimeOffController> {
   const TimeOffView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     TimeOffController controller = Get.put(TimeOffController());
     return Obx(() => Scaffold(
           body: Column(
@@ -27,7 +28,7 @@ class TimeOffView extends GetView<TimeOffController> {
                 trailingIcon: controller.tabIndex.value == 0
                     ? FontAwesomeIcons.squarePlus
                     : FontAwesomeIcons.filter,
-                trailingColor: MyTheme.theme.buttonTheme.colorScheme!.primary,
+                trailingColor: theme.buttonTheme.colorScheme!.primary,
                 // image: 'assets/images/app_icon.png',
               ),
               Text(

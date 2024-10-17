@@ -13,10 +13,11 @@ class InfoCheckInOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: MyTheme.theme.primaryColor,
+        color: theme.primaryColor,
         elevation: 0,
         child: Stack(
           children: [
@@ -27,8 +28,8 @@ class InfoCheckInOut extends StatelessWidget {
               child: Icon(
                 FontAwesomeIcons.clock,
                 size: 100,
-                color: MyTheme.theme.buttonTheme.colorScheme!.onPrimary
-                    .withOpacity(0.2),
+                color:
+                    theme.buttonTheme.colorScheme!.onPrimary.withOpacity(0.2),
               ),
             ),
             Padding(
@@ -38,7 +39,7 @@ class InfoCheckInOut extends StatelessWidget {
                   CustomText2(
                     text: 'Don\'t forget to check in and out',
                     fontType: FontType.bodyMedium,
-                    colorText: MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                    colorText: theme.buttonTheme.colorScheme!.onPrimary,
                   ),
                   5.verticalSpace,
                   Row(
@@ -46,15 +47,14 @@ class InfoCheckInOut extends StatelessWidget {
                       Icon(
                         Icons.info,
                         size: 30,
-                        color: MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                        color: theme.buttonTheme.colorScheme!.onPrimary,
                       ),
                       10.horizontalSpace,
                       CustomText(
                         text: '16 Oct 2024 (08:00 - 17:00)',
                         fontType: FontType.bodyLarge,
                         weight: FontWeight.bold,
-                        colorText:
-                            MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                        colorText: theme.buttonTheme.colorScheme!.onPrimary,
                       ),
                     ],
                   ),
@@ -69,8 +69,7 @@ class InfoCheckInOut extends StatelessWidget {
                             text: 'Today Schedule',
                             fontType: FontType.titleMedium,
                             weight: FontWeight.bold,
-                            colorText:
-                                MyTheme.theme.buttonTheme.colorScheme!.primary,
+                            colorText: theme.buttonTheme.colorScheme!.primary,
                             mainAxisAlignment: MainAxisAlignment.center,
                           ),
                           10.verticalSpace,
@@ -113,8 +112,7 @@ class InfoCheckInOut extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                color:
-                                    MyTheme.theme.shadowColor.withOpacity(0.3),
+                                color: theme.shadowColor.withOpacity(0.3),
                                 width: 1,
                                 height: 30,
                               ),
@@ -192,8 +190,7 @@ class InfoCheckInOut extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                color:
-                                    MyTheme.theme.shadowColor.withOpacity(0.3),
+                                color: theme.shadowColor.withOpacity(0.3),
                                 width: 1,
                                 height: 30,
                               ),

@@ -17,6 +17,7 @@ class AccountView extends GetView<AccountController> {
   const AccountView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         children: [
@@ -68,7 +69,7 @@ class AccountView extends GetView<AccountController> {
                           child: Container(
                             height: 39.h,
                             width: 39.h,
-                            decoration: MyTheme.theme
+                            decoration: theme
                                 .extension<HeaderContainerThemeData>()
                                 ?.decoration,
                             child: SvgPicture.asset(
@@ -76,7 +77,7 @@ class AccountView extends GetView<AccountController> {
                                   ? 'assets/vectors/moon.svg'
                                   : 'assets/vectors/sun.svg',
                               fit: BoxFit.none,
-                              color: MyTheme.theme.primaryColor,
+                              color: theme.primaryColor,
                               height: 10,
                               width: 10,
                             ),

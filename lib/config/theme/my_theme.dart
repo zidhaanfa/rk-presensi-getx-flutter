@@ -8,7 +8,7 @@ import '../../app/data/local/my_shared_pref.dart';
 class MyTheme {
   static ThemeMode themeLight = ThemeMode.light;
   static ThemeMode themeDark = ThemeMode.dark;
-  static final theme = Theme.of(Get.context!);
+  // static final theme = Theme.of(Get.context!);
 
   static ThemeData light = FlexThemeData.light(
     scheme: FlexScheme.amber,

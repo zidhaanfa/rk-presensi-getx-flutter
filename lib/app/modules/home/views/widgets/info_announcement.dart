@@ -12,6 +12,7 @@ class InfoAnnouncement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Row(
@@ -29,7 +30,7 @@ class InfoAnnouncement extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: CustomTextButton(
                 text: 'View All',
-                colorText: MyTheme.theme.primaryColor,
+                colorText: theme.primaryColor,
                 onPressed: () {},
                 fontType: FontType.titleSmall,
               ),

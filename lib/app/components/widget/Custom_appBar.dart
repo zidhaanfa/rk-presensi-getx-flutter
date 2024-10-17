@@ -15,6 +15,7 @@ class CustomAppBar extends StatelessWidget {
     this.withImage,
     this.image,
     this.trailingWidget,
+    this.color,
   });
 
   String pageName;
@@ -26,6 +27,7 @@ class CustomAppBar extends StatelessWidget {
   bool? withImage;
   String? image;
   Widget? trailingWidget;
+  Color? color;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -33,8 +35,8 @@ class CustomAppBar extends StatelessWidget {
       height: 110.h,
       width: double.infinity,
       decoration: BoxDecoration(
-          // color: theme.appBarTheme.backgroundColor,
-          ),
+        color: color,
+      ),
       child: Stack(
         fit: StackFit.expand,
         children: [

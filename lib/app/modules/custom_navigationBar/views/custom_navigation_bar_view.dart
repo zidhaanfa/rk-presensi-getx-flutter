@@ -14,6 +14,7 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
   const CustomNavigationBarView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     CustomNavigationBarController controller =
         Get.put(CustomNavigationBarController());
     return Obx(() => Scaffold(
@@ -23,8 +24,7 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: controller.bottomNavIndex.value == 0
               ? FloatingActionButton(
-                  backgroundColor:
-                      MyTheme.theme.buttonTheme.colorScheme!.primary,
+                  backgroundColor: theme.buttonTheme.colorScheme!.primary,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(40.0),
@@ -33,7 +33,7 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
                   child: Icon(
                     //icon request attendance
                     FontAwesomeIcons.rightToBracket,
-                    color: MyTheme.theme.buttonTheme.colorScheme!.onPrimary,
+                    color: theme.buttonTheme.colorScheme!.onPrimary,
                   ),
                   onPressed: () {},
                 )
@@ -43,8 +43,8 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
             height: 65,
             tabBuilder: (int index, bool isActive) {
               final color = isActive
-                  ? MyTheme.theme.buttonTheme.colorScheme!.primary
-                  : MyTheme.theme.buttonTheme.colorScheme!.onBackground;
+                  ? theme.buttonTheme.colorScheme!.primary
+                  : theme.buttonTheme.colorScheme!.onBackground;
               return Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +57,7 @@ class CustomNavigationBarView extends GetView<CustomNavigationBarController> {
                 ],
               );
             },
-            backgroundColor: MyTheme.theme.cardColor, // Colors.white,
+            backgroundColor: theme.cardColor, // Colors.white,
             activeIndex: controller.bottomNavIndex.value,
             splashColor: Colors.orange,
             // notchAndCornersAnimation: controller.borderRadiusAnimation,
