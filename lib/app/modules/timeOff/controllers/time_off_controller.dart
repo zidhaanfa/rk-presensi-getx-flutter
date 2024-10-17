@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TimeOffController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+    with GetTickerProviderStateMixin {
   //TODO: Implement TimeOffController
 
   late TabController tabTimeOffController;
+  late TabController tabTimeOffApprovalDetailController;
 
   final count = 0.obs;
   final tabLength = 2.obs;
   final tabIndex = 0.obs;
   final tabName = 'Internet'.obs;
+
+  final tabLengthApproval = 2.obs;
+  final tabIndexApproval = 0.obs;
 
   final tabs = [].obs;
 
@@ -18,17 +22,12 @@ class TimeOffController extends GetxController
   void onInit() {
     super.onInit();
     tabTimeOffController = TabController(length: tabLength.value, vsync: this);
+    tabTimeOffApprovalDetailController =
+        TabController(length: tabLengthApproval.value, vsync: this);
     tabTimeOffController.addListener(() {
       if (tabTimeOffController.indexIsChanging) {
         tabIndex.value = tabTimeOffController.index;
 
-        if (tabTimeOffController.index == 0) {
-          tabName.value = 'Internet';
-        } else if (tabTimeOffController.index == 1) {
-          tabName.value = 'Produk';
-        } else if (tabTimeOffController.index == 2) {
-          tabName.value = 'Wishlist';
-        }
         print(tabTimeOffController.index);
         print(tabName.value);
       }
